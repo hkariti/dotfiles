@@ -1,0 +1,7 @@
+[user]
+	email = hagai@bigpanda.io
+	name = Hagai
+[push]
+	default = matching
+[url "ssh://"]
+        insteadOf = git://
