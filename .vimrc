@@ -36,3 +36,8 @@ set laststatus=2
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 colorscheme solarized
+
+let NERDTreeIgnore = ['\.pyc$']
+
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
