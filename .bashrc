@@ -2,6 +2,15 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+function init_ssh_agent {
+    SSH_AGENT_PID=`pgrep -u $USER ssh-agent`
+    [ -z "$SSH_AGENT_PID" ] && return
+    SSH_AUTH_SOCK=`find /tmp/ssh-* -name "agent.*" -user $USER`
+    export SSH_AUTH_SOCK SSH_AGENT_PID
+
+    ssh-add -l &>/dev/null || ssh-add
+}
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -119,3 +128,9 @@ export EDITOR=vim
 
 eval `dircolors ~/.dir_colors`
 TERM=xterm-256color
+
+alias generate_hosts="{ cat /etc/hosts.base; sed -n '/###/,$ p' hosts/hosts-with-locals; } | tee /etc/hosts"
+
+init_ssh_agent
+
+alias devbox='cd ~/repo/bigpanda/operations/devbox'
