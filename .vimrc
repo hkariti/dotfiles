@@ -18,6 +18,10 @@ Bundle 'edkolev/tmuxline.vim'
 Bundle 'bling/vim-airline'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tpope/vim-fugitive'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'jewes/Conque-Shell'
+Bundle 'alfredodeza/pytest.vim'
+Bundle 'Tagbar'
 
 filetype plugin on
 filetype indent on
@@ -38,6 +42,24 @@ let g:solarized_termtrans=1
 colorscheme solarized
 
 let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeQuitOnOpen=1
 
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
+set shell=/bin/bash
+
+nmap <Leader>c :bp \| bd #<CR>
+nmap <Leader>N :NERDTreeToggle<CR>
+nmap <Leader>\ :buffer #<CR>
+
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> h :TmuxNavigateLeft<cr>
+nnoremap <silent> j :TmuxNavigateDown<cr>
+nnoremap <silent> k :TmuxNavigateUp<cr>
+nnoremap <silent> l :TmuxNavigateRight<cr>
+nnoremap <silent> \ :TmuxNavigatePrevious<cr>
+
