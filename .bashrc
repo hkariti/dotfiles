@@ -134,3 +134,12 @@ alias generate_hosts="{ cat /etc/hosts.base; sed -n '/###/,$ p' hosts/hosts-with
 init_ssh_agent
 
 alias devbox='cd ~/repo/bigpanda/operations/devbox'
+
+export VAGRANT_DEFAULT_PROVIDER=lxc
+
+function commit_dotfiles() (
+    cd ~/repo/dotfiles
+    git add .
+    git commit
+    git push
+)
