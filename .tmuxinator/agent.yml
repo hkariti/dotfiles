@@ -1,7 +1,7 @@
-# ~/.tmuxinator/devbox.yml
+# ~/.tmuxinator/agent.yml
 
-name: devbox
-root: ~/repo/bigpanda/operations/devbox-v2
+name: agent
+root: ~/repo/bigpanda/agent
 
 # Optional tmux socket
 # socket_name: foo
@@ -19,10 +19,4 @@ root: ~/repo/bigpanda/operations/devbox-v2
 # tmux_command: byobu
 
 windows:
-  - main:
-      layout: main-vertical
-      panes:
-        - bash
-        - playbooks:
-            - cd playbooks/dev
-            - bash
+    - main:
