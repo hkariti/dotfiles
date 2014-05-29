@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TMUXINATOR_DIR=~/.tmuxinator
+TMUXINATOR_DIR=${TMUXINATOR_DIR:-~/.tmuxinator}
 
 projects=`ls "$TMUXINATOR_DIR"/*"$1"* 2>/dev/null`
 lines=`echo "$projects" | wc -l`
