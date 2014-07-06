@@ -129,7 +129,7 @@ export EDITOR=vim
 eval `dircolors ~/.dir_colors`
 TERM=xterm-256color
 
-alias generate_hosts="{ cat /etc/hosts.base; sed -n '/###/,$ p' hosts/hosts-with-locals; } | tee /etc/hosts"
+alias generate_hosts="{ cat /etc/hosts.base; sed -n '/###/,$ p' hosts/hosts-with-locals; } | sudo tee /etc/hosts"
 
 init_ssh_agent
 

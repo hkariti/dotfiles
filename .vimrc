@@ -23,6 +23,27 @@ Bundle 'jewes/Conque-Shell'
 Bundle 'alfredodeza/pytest.vim'
 Bundle 'Tagbar'
 
+" Custom text objects
+Bundle 'kana/vim-textobj-user'
+
+" ai/aI ii/iI select indented block
+Bundle 'kana/vim-textobj-indent' 
+
+" aq/iq select area between quotes
+Bundle 'beloglazov/vim-textobj-quotes'
+
+" au/iu/go select URLs
+Bundle 'jceb/vim-textobj-uri'
+
+" ai/iv area between _ or CamelCase
+Bundle 'Julian/vim-textobj-variable-segment'
+
+" a,/i, select function parameters
+Bundle 'sgur/vim-textobj-parameter'
+
+" Tpope magics
+Bundle 'tpope/vim-unimpaired'
+
 filetype plugin on
 filetype indent on
 
@@ -43,6 +64,9 @@ colorscheme solarized
 
 let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeQuitOnOpen=1
+
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+let g:ctrlp_show_hidden = 1
 
 set shell=/bin/bash
 
