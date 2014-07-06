@@ -1,7 +1,7 @@
-# ~/.tmuxinator/agent.yml
+# ~/.tmuxinator/general.yml
 
-name: agent
-root: ~/repo/bigpanda/agent
+name: general
+root: ~/
 
 # Optional tmux socket
 # socket_name: foo
@@ -20,7 +20,3 @@ root: ~/repo/bigpanda/agent
 
 windows:
     - main:
-        layout: even-horizontal
-        panes:
-           - echo
-           - cd ~/vms/

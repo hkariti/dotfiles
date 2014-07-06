@@ -19,4 +19,4 @@ root: ~/repo/bigpanda/playbooks
 # tmux_command: byobu
 
 windows:
-    - bash: bash
+    - main: bash
