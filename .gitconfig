@@ -2,3 +2,5 @@
 	default = matching
 [url "ssh://"]
         insteadOf = git://
+[user]
+	name = Hagai Kariti

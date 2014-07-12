@@ -22,7 +22,6 @@ windows:
   - main:
       layout: main-vertical
       panes:
-        - bash
+        - echo
         - playbooks:
             - cd playbooks/dev
-            - bash
