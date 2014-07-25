@@ -126,7 +126,6 @@ alias work='cd repo/bigpanda'
 export EDITOR=vim
 #alias docker='sudo docker -H :1337'
 
-eval `dircolors ~/.dir_colors`
 TERM=xterm-256color
 
 alias generate_hosts="{ cat /etc/hosts.base; sed -n '/###/,$ p' hosts/hosts-with-locals; } | sudo tee /etc/hosts"
