@@ -9,6 +9,7 @@ Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 Bundle 'scrooloose/syntastic'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'Valloric/ListToggle'
@@ -43,6 +44,10 @@ Bundle 'sgur/vim-textobj-parameter'
 
 " Tpope magics
 Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-surround'
+
+" Javascript completion
+Bundle 'marijnh/tern_for_vim'
 
 filetype plugin on
 filetype indent on
@@ -52,6 +57,8 @@ set softtabstop=4
 set expandtab
 set shiftwidth=4
 set bg=dark
+set ignorecase
+set smartcase
 
 set t_Co=256
 let g:tmuxline_powerline_separators = 0
@@ -73,6 +80,7 @@ set shell=/bin/bash
 nmap <Leader>c :bp \| bd #<CR>
 nmap <Leader>N :NERDTreeToggle<CR>
 nmap <Leader>\ :buffer #<CR>
+nmap gd :YcmCompleter GoToDefinition
 
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
@@ -87,3 +95,4 @@ nnoremap <silent> k :TmuxNavigateUp<cr>
 nnoremap <silent> l :TmuxNavigateRight<cr>
 nnoremap <silent> \ :TmuxNavigatePrevious<cr>
 
+let g:UltiSnipsExpandTrigger = "<c-L>"
