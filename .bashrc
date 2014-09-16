@@ -136,7 +136,7 @@ alias devbox='cd ~/repo/bigpanda/operations/devbox'
 
 export VAGRANT_DEFAULT_PROVIDER=lxc
 
-shopt -ixon
+stty -ixon
 
 function commit_dotfiles() (
     cd ~/repo/dotfiles
