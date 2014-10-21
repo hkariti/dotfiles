@@ -6,7 +6,7 @@ call vundle#rc()
 
 " let Vundle manage Vundle, required
 Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
+"Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
@@ -69,8 +69,14 @@ let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 colorscheme solarized
 
-let NERDTreeIgnore = ['\.pyc$']
-let NERDTreeQuitOnOpen=1
+"let NERDTreeIgnore = ['\.pyc$']
+"let NERDTreeQuitOnOpen=1
+let g:netrw_winsize      = -30
+let g:netrw_banner       = 0
+let g:netrw_keepdir      = 0
+let g:netrw_liststyle    = 1 " or 3
+let g:netrw_sort_options = 'i'
+let g:netrw_browse_split = 4
 
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 let g:ctrlp_show_hidden = 1
@@ -78,7 +84,8 @@ let g:ctrlp_show_hidden = 1
 set shell=/bin/bash
 
 nmap <Leader>c :bp \| bd #<CR>
-nmap <Leader>N :NERDTreeToggle<CR>
+nmap <Leader>N :Vexplore<CR>
+nmap <Leader>p :Vexplore **/
 nmap <Leader>\ :buffer #<CR>
 nmap gd :YcmCompleter GoToDefinition
 

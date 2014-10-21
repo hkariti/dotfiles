@@ -8,7 +8,7 @@ function init_ssh_agent {
     SSH_AUTH_SOCK=`find /tmp/ssh-* -name "agent.*" -user $USER`
     export SSH_AUTH_SOCK SSH_AGENT_PID
 
-    ssh-add -l &>/dev/null || ssh-add
+    ssh-add -l &>/dev/null || ssh-add -t $((60*60*10))
 }
 
 # If not running interactively, don't do anything

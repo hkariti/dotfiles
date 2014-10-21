@@ -1,7 +1,7 @@
-# ~/.tmuxinator/playbooks.yml
+# ~/.tmuxinator/mopidy.yml
 
-name: playbooks
-root: ~/repo/bigpanda/playbooks
+name: mopidy
+root: ~/repo/
 
 # Optional tmux socket
 # socket_name: foo
@@ -19,8 +19,8 @@ root: ~/repo/bigpanda/playbooks
 # tmux_command: byobu
 
 windows:
-    - main:
-        layout: main-horizontal
-        panes:
-            - vim
-            - echo
+  - main:
+      layout: main-horizontal
+      panes:
+        - vim
+        - echo

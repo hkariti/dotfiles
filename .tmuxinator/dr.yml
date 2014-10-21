@@ -19,4 +19,8 @@ root: ~/
 # tmux_command: byobu
 
 windows:
-    - main: bash
+    - main:
+          layout: main-horizontal
+          panes:
+            - cd ~/repo/bigpanda/playbooks
+            - cd ~/vms
