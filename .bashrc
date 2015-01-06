@@ -133,6 +133,7 @@ alias generate_hosts="{ cat /etc/hosts.base; sed -n '/###/,$ p' hosts/hosts-with
 init_ssh_agent
 
 alias devbox='cd ~/repo/bigpanda/operations/devbox'
+alias 'tmux-ttys'='tmux list-panes -a -F "#{session_name} #{window_index}:#{window_name}.#{pane_index} #{pane_tty}"'
 
 export VAGRANT_DEFAULT_PROVIDER=lxc
 
@@ -144,3 +145,11 @@ function commit_dotfiles() (
     git commit
     git push
 )
+
+function root {
+    tmux_session=`tmux display-message -p '#S'`
+    [ -z "$tmux_session" ] && return
+    root=`grep root: ~/.tmuxinator/"$tmux_session".yml | cut -d' ' -f 2-`
+    [ -z "$root" ] && return
+    eval cd $root
+}
