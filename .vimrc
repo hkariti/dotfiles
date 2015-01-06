@@ -1,3 +1,6 @@
+""" VUNDLE STUFF
+""" Vundle is a plugin to manage installtion of vim plugins
+
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -6,22 +9,48 @@ call vundle#rc()
 
 " let Vundle manage Vundle, required
 Bundle 'gmarik/vundle'
-"Bundle 'scrooloose/nerdtree'
+
+""" PLUGINS
+" Fuzzy search files in the current directory tree/open files
 Bundle 'kien/ctrlp.vim'
+" Auto-complete engine
+Bundle 'Valloric/YouCompleteMe'
+" Syntax check
+Bundle 'scrooloose/syntastic'
+
+" A lot of [X and ]X keymaps for previous/next stuff
+Bundle 'tpope/vim-unimpaired'
+" Delete, change and add surrounding characters around things
+Bundle 'tpope/vim-surround'
+
+" Make navigation between tmux and vim panes use the same key
+Bundle 'christoomey/vim-tmux-navigator'
+" Git plugin
+Bundle 'tpope/vim-fugitive'
+" Auto-insert matching quotes/braces/backets when opening them
+Bundle 'Raimondi/delimitMate'
+" Cool directory tree panel
+"Bundle 'scrooloose/nerdtree'
+" Cool status line for vim
+Bundle 'bling/vim-airline'
+" Snippets of boilerplate code
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
-Bundle 'scrooloose/syntastic'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'Valloric/ListToggle'
-Bundle 'Raimondi/delimitMate'
-Bundle 'chase/vim-ansible-yaml'
+" Match tmux colors to vim colors
 Bundle 'edkolev/tmuxline.vim'
-Bundle 'bling/vim-airline'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'tpope/vim-fugitive'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'jewes/Conque-Shell'
+" Don't remember what that is
+Bundle 'Valloric/ListToggle'
+
+" Py.test integtration
 Bundle 'alfredodeza/pytest.vim'
+
+" Ansible syntax support
+Bundle 'chase/vim-ansible-yaml'
+
+" Javascript completion
+Bundle 'marijnh/tern_for_vim'
+
+" Show functions and other tabs in sidebar
 Bundle 'Tagbar'
 
 " Custom text objects
@@ -42,64 +71,83 @@ Bundle 'Julian/vim-textobj-variable-segment'
 " a,/i, select function parameters
 Bundle 'sgur/vim-textobj-parameter'
 
-" Tpope magics
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-surround'
+" af/if area between a given character
+Bundle 'thinca/vim-textobj-between'
 
-" Javascript completion
-Bundle 'marijnh/tern_for_vim'
-
+""" OTHER CONFIGS
 filetype plugin on
 filetype indent on
 
+" Saner tabs
 set tabstop=4
 set softtabstop=4
-set expandtab
 set shiftwidth=4
+" Use spaces and not tabs
+set expandtab
+" Terminal is dark
 set bg=dark
+" lower case==ignore case when searching
 set ignorecase
 set smartcase
 
-set t_Co=256
+set shell=/bin/bash
+
+" Close documentation popup when leaving insert
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+""" PLUGIN CONFIGS
+" tmuxline configs
 let g:tmuxline_powerline_separators = 0
 set laststatus=2
 
-
+" Nice 256 color scheme
+set t_Co=256
+Bundle 'altercation/vim-colors-solarized'
+" Config solarized to use 256 colors
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 colorscheme solarized
 
-"let NERDTreeIgnore = ['\.pyc$']
-"let NERDTreeQuitOnOpen=1
-let g:netrw_winsize      = -30
+" netrw config
 let g:netrw_banner       = 0
+let g:netrw_browse_split = 4
 let g:netrw_keepdir      = 0
 let g:netrw_liststyle    = 1 " or 3
 let g:netrw_sort_options = 'i'
-let g:netrw_browse_split = 4
+let g:netrw_winsize      = -30
 
+" NERDTree configs
+"let NERDTreeIgnore = ['\.pyc$']
+"let NERDTreeQuitOnOpen=1
+
+" CTRLp configs
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 let g:ctrlp_show_hidden = 1
 
-set shell=/bin/bash
+" tmux_navigator configs, I want to map my own nav keys
+let g:tmux_navigator_no_mappings = 1
 
+""" KEY MAPS
+" Close current file but keep the window open
 nmap <Leader>c :bp \| bd #<CR>
+" Go to previous buffer
+nmap <Leader>\ :buffer #<CR>
+" Jump to definition of object under cursor
+nmap gd :YcmCompleter GoToDefinition
+" Toggle netrw
 nmap <Leader>N :Vexplore<CR>
 nmap <Leader>p :Vexplore **/
-nmap <Leader>\ :buffer #<CR>
-nmap gd :YcmCompleter GoToDefinition
-
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
-let g:tmux_navigator_no_mappings = 1
 
+" Same as tmux, alt-hjkl moves between panes
 nnoremap <silent> h :TmuxNavigateLeft<cr>
 nnoremap <silent> j :TmuxNavigateDown<cr>
 nnoremap <silent> k :TmuxNavigateUp<cr>
 nnoremap <silent> l :TmuxNavigateRight<cr>
 nnoremap <silent> \ :TmuxNavigatePrevious<cr>
 
+" Snippets trigger
 let g:UltiSnipsExpandTrigger = "<c-L>"
