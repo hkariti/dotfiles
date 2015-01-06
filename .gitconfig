@@ -1,5 +1,5 @@
 [push]
-	default = matching
+	default = current
 [url "ssh://"]
         insteadOf = git://
 [user]
