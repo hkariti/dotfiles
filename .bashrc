@@ -3,12 +3,14 @@
 # for examples
 
 function init_ssh_agent {
-    SSH_AGENT_PID=`pgrep -u $USER ssh-agent`
-    [ -z "$SSH_AGENT_PID" ] && return
-    SSH_AUTH_SOCK=`find /tmp/ssh-* -name "agent.*" -user $USER`
-    export SSH_AUTH_SOCK SSH_AGENT_PID
+    if [ -z "$SSH_AUTH_SOCK" ]; then
+        SSH_AGENT_PID=`pgrep -u $USER ssh-agent`
+        [ -z "$SSH_AGENT_PID" ] && return
+        SSH_AUTH_SOCK=`find /tmp/ssh-* -name "agent.*" -user $USER`
+        export SSH_AUTH_SOCK SSH_AGENT_PID
+    fi
 
-    ssh-add -l &>/dev/null || ssh-add -t $((60*60*10))
+    ssh-add -l &>/dev/null || ssh-add -t $((60*60*1))
 }
 
 # If not running interactively, don't do anything
