@@ -153,3 +153,6 @@ function root {
     [ -z "$root" ] && return
     eval cd $root
 }
+
+# added by travis gem
+[ -f /home/hkariti/.travis/travis.sh ] && source /home/hkariti/.travis/travis.sh
