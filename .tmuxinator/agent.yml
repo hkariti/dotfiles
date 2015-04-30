@@ -20,7 +20,7 @@ root: ~/repo/bigpanda/agent
 
 windows:
     - main:
-        layout: even-horizontal
+        layout: main-horizontal
         panes:
            - echo
            - cd ~/vms/
