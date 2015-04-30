@@ -2,10 +2,13 @@
 
 TMUXINATOR_DIR=${TMUXINATOR_DIR:-~/.tmuxinator}
 
-projects=`ls "$TMUXINATOR_DIR"/*"$1"* 2>/dev/null`
-lines=`echo "$projects" | wc -l`
+projects=`ls "$TMUXINATOR_DIR"/*"$1"* 2>/dev/null | xargs basename`
+lines=`echo "$projects" | wc -l | sed 's/ *//g'`
 
-if [ "$lines" = 1 ]; then
+echo l "$lines" p
+echo pp $projects
+if [ "$lines" == 1 ]; then
     project=${projects%.yml}
+    echo p $project
     exec mux start "$project"
 fi

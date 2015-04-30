@@ -83,6 +83,7 @@ Bundle 'thinca/vim-textobj-between'
 """ OTHER CONFIGS
 filetype plugin on
 filetype indent on
+syntax on
 
 " Saner tabs
 set tabstop=4
