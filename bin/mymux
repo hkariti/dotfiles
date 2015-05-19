@@ -1,5 +1,7 @@
 #!/bin/bash
 
+exec 1>/tmp/mymux.log 2>&1
+
 TMUXINATOR_DIR=${TMUXINATOR_DIR:-~/.tmuxinator}
 
 projects=`ls "$TMUXINATOR_DIR"/*"$1"* 2>/dev/null | xargs basename`
