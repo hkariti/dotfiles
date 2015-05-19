@@ -13,6 +13,10 @@ function init_ssh_agent {
     ssh-add -l &>/dev/null || ssh-add -t $((60*60*1))
 }
 
+function fix_tmux_path {
+    tmux set-environment -g PATH "$PATH"
+}
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -138,7 +142,16 @@ init_ssh_agent
 alias devbox='cd ~/repo/bigpanda/operations/devbox'
 alias 'tmux-ttys'='tmux list-panes -a -F "#{session_name} #{window_index}:#{window_name}.#{pane_index} #{pane_tty}"'
 
-export VAGRANT_DEFAULT_PROVIDER=lxc
+if [ "`uname -s`" == Linux ]; then
+    export VAGRANT_DEFAULT_PROVIDER=lxc
+elif [ "`name -s`" == Darwin ]; then
+    export LC_ALL=en_US.UTF-8
+    fix_tmux_path
+
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+        . $(brew --prefix)/etc/bash_completion
+    fi
+fi
 
 stty -ixon
 
