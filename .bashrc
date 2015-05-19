@@ -17,27 +17,44 @@ function fix_tmux_path {
     tmux set-environment -g PATH "$PATH"
 }
 
+function commit_dotfiles() (
+    cd ~/repo/dotfiles
+    git add .
+    git commit
+    git push
+)
+
+function root {
+    tmux_session=`tmux display-message -p '#S'`
+    [ -z "$tmux_session" ] && return
+    root=`grep root: ~/.tmuxinator/"$tmux_session".yml | cut -d' ' -f 2-`
+    [ -z "$root" ] && return
+    eval cd $root
+}
+
+stty -ixon
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
 
+# append to the history file, don't overwrite it
+shopt -s histappend
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
 
 export PATH=$PATH:~/bin
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -144,7 +161,7 @@ alias 'tmux-ttys'='tmux list-panes -a -F "#{session_name} #{window_index}:#{wind
 
 if [ "`uname -s`" == Linux ]; then
     export VAGRANT_DEFAULT_PROVIDER=lxc
-elif [ "`name -s`" == Darwin ]; then
+elif [ "`uname -s`" == Darwin ]; then
     export LC_ALL=en_US.UTF-8
     fix_tmux_path
 
@@ -152,23 +169,6 @@ elif [ "`name -s`" == Darwin ]; then
         . $(brew --prefix)/etc/bash_completion
     fi
 fi
-
-stty -ixon
-
-function commit_dotfiles() (
-    cd ~/repo/dotfiles
-    git add .
-    git commit
-    git push
-)
-
-function root {
-    tmux_session=`tmux display-message -p '#S'`
-    [ -z "$tmux_session" ] && return
-    root=`grep root: ~/.tmuxinator/"$tmux_session".yml | cut -d' ' -f 2-`
-    [ -z "$root" ] && return
-    eval cd $root
-}
 
 # added by travis gem
 [ -f /home/hkariti/.travis/travis.sh ] && source /home/hkariti/.travis/travis.sh
