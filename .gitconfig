@@ -4,3 +4,6 @@
         insteadOf = git://
 [user]
 	name = Hagai Kariti
+
+[merge]
+    tool = vimdiff

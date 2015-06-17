@@ -29,6 +29,9 @@ Bundle 'tpope/vim-surround'
 Bundle 'christoomey/vim-tmux-navigator'
 " Git plugin
 Bundle 'tpope/vim-fugitive'
+Bundle 'airblade/vim-gitgutter'
+" Dispatch for tests
+Bundle 'tpope/vim-dispatch'
 " Auto-insert matching quotes/braces/backets when opening them
 Bundle 'Raimondi/delimitMate'
 " Cool directory tree panel
@@ -105,6 +108,11 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " Set tabwidth to 2 for javascript
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal omnifunc=tern#Complete
+autocmd FileType javascript map gd :TernDef<CR>
+
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType yaml map K :!ansible-doc <cword><CR>
+autocmd FileType ansible map K :!ansible-doc <cword><CR>
 
 """ PLUGIN CONFIGS
 " tmuxline configs
@@ -139,13 +147,22 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 " tmux_navigator configs, I want to map my own nav keys
 let g:tmux_navigator_no_mappings = 1
 
+" When pressing <CR> after starting a bracket, put the end bracket in it's own
+" line
+let g:delimitMate_expand_cr=2
+" When entering spaces afterh delimiters, enter them in the otehr end
+let g:delimitMate_expand_space=1
+
+" Toggle gitgutter
+nmap <Leader>d :GitGutterToggle<CR>
+
 """ KEY MAPS
 " Close current file but keep the window open
 nmap <Leader>c :Bdelete<CR>
 " Go to previous buffer
 nmap <Leader>\ :buffer #<CR>
 " Jump to definition of object under cursor
-nmap gd :YcmCompleter GoToDefinition
+nmap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Toggle NERDTree
 nmap <Leader>n :NERDTreeToggle<CR>
 nmap <Leader>N :NERDTreeFind<CR>
@@ -164,3 +181,5 @@ nnoremap <silent> \ :TmuxNavigatePrevious<cr>
 
 " Snippets trigger
 let g:UltiSnipsExpandTrigger = "<c-L>"
+" Add buffer number (%n) before filename in status line
+let g:airline_section_c="%<%n %f%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#"

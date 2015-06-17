@@ -1,0 +1,10 @@
+{
+  "libraries": [
+    "chai"
+  ],
+  "plugins": {
+    "node": {},
+    "angular": {}
+  },
+  "dependencyBudget": 20000
+}

@@ -37,12 +37,16 @@ zstyle ':completion:*' word false
 autoload -Uz compinit
 compinit
 
+# Fucking proper history nagivation
+bindkey "^[OA" up-line-or-history
+bindkey "^[OB" down-line-or-history
+
 # Various settings
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=100000
 setopt appendhistory nomatch notify interactivecomments
-unsetopt autocd beep extendedglob
+unsetopt autocd beep extendedglob sharehistory
 bindkey -e
 
 function init_ssh_agent {
