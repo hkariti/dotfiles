@@ -5,6 +5,7 @@ export TERM=xterm-256color
 source ~/repo/dotfiles/antigen/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle git
+antigen bundle git-flow
 antigen bundle colored-man
 antigen bundle tmuxinator
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -67,12 +68,36 @@ function commit_dotfiles() (
     git push
 )
 
+function realpath {
+    [ -z "$1" ] && return 1
+    case "`uname`" in
+        Linux)
+            readlink -f "$1"
+            ;;
+        Darwin)
+            command realpath "$1"
+            ;;
+        *)
+            echo "Unknown os">&2
+            return 1
+            ;;
+    esac
+}
+
 function root {
-    tmux_session=`tmux display-message -p '#S'`
-    [ -z "$tmux_session" ] && return
-    root=`grep root: ~/.tmuxinator/"$tmux_session".yml | cut -d' ' -f 2-`
-    [ -z "$root" ] && return
-    eval cd $root
+    if [ "$1" ]; then
+        SESSION_ROOT=`realpath "$1"`
+        echo Session root is now $SESSION_ROOT
+    fi
+    if [ -z "$SESSION_ROOT" ]; then
+        tmux_session=`tmux display-message -p '#S'`
+        [ -z "$tmux_session" ] && return
+        root=`grep root: ~/.tmuxinator/"$tmux_session".yml | cut -d' ' -f 2-`
+        [ -z "$root" ] && return
+        SESSION_ROOT=$root
+        echo Autodetected session root to be $SESSION_ROOT
+    fi
+    eval cd $SESSION_ROOT
 }
 
 help () {
