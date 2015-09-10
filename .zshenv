@@ -1,5 +1,6 @@
 export EDITOR="vim"
 export PATH=$PATH:~/bin
+export GOPATH=$HOME/golang
 if [ "`uname -s`" = "Darwin" ]; then
     export PATH="/usr/local/sbin:$PATH"
     export LANG="en_US.UTF-8"
