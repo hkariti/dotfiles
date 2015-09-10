@@ -24,6 +24,14 @@ Bundle 'moll/vim-bbye'
 Bundle 'tpope/vim-unimpaired'
 " Delete, change and add surrounding characters around things
 Bundle 'tpope/vim-surround'
+" Allow repeating whole plugin maps with .
+Bundle 'tpope/vim-repeat'
+" Actions on word styles - case preserving substiture, coerction between name
+" styles, etc
+Bundle 'tpope/vim-abolish'
+
+" Golang
+Plugin 'fatih/vim-go'
 
 " Make navigation between tmux and vim panes use the same key
 Bundle 'christoomey/vim-tmux-navigator'
