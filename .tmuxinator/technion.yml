@@ -1,7 +1,7 @@
-# ~/.tmuxinator/devbox.yml
+# ~/.tmuxinator/comp-sci.yml
 
-name: devbox
-root: ~/repo/bigpanda/playbooks/devbox
+name: technion
+root: ~/repo/technion
 
 # Optional tmux socket
 # socket_name: foo
@@ -18,8 +18,12 @@ root: ~/repo/bigpanda/playbooks/devbox
 # Change the command to call tmux.  This can be used by derivatives/wrappers like byobu.
 # tmux_command: byobu
 
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: logs
+
 windows:
-  - main:
-      layout: main-vertical
+  - editor:
+      layout: even-horizontal
       panes:
+        - vim
         - echo
