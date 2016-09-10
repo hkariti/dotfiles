@@ -9,5 +9,5 @@ lines=`echo "$projects" | wc -l | sed 's/ *//g'`
 
 if [ "$lines" == 1 ]; then
     project=${projects%.yml}
-    exec mux start "$project"
+    exec tmuxinator start "$project"
 fi
