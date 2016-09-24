@@ -6,7 +6,7 @@ source ~/repo/dotfiles/antigen/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle git
 antigen bundle git-flow
-antigen bundle colored-man
+#antigen bundle colored-man
 antigen bundle tmuxinator
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme clean
@@ -137,3 +137,6 @@ init_ssh_agent
 
 #prompt="%n@%m:%~%# "
 
+
+export NVM_DIR="/Users/hkariti/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
