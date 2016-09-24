@@ -6,7 +6,6 @@ source ~/repo/dotfiles/antigen/antigen.zsh
 antigen use oh-my-zsh
 antigen bundle git
 antigen bundle git-flow
-#antigen bundle colored-man
 antigen bundle tmuxinator
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme clean
