@@ -1,15 +1,10 @@
 stty -ixon
 export TERM=xterm-256color
 
-# Antigen settings
-source ~/repo/dotfiles/antigen/antigen.zsh
-antigen use oh-my-zsh
-antigen bundle git
-antigen bundle git-flow
-antigen bundle tmuxinator
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen theme clean
-antigen apply
+source <(antibody init)
+antibody bundle < ~/repo/dotfiles/plugins.zsh
+source ~/repo/dotfiles/git.zsh
+source ~/repo/dotfiles/clean.zsh-theme
 
 # Completion settings
 zstyle ':completion:*' auto-description 'specify: %d'
@@ -36,6 +31,7 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*' word false
 autoload -Uz compinit
 compinit
+bindkey -e
 
 # Fucking proper history nagivation
 bindkey "^[OA" up-line-or-history
@@ -43,6 +39,7 @@ bindkey "^[OB" down-line-or-history
 bindkey "^U" backward-kill-line
 bindkey "^W" bash-backward-kill-word
 
+WORDCHARS=
 zle -N bash-backward-kill-word
 function bash-backward-kill-word {
     local WORDCHARS="${WORDCHARS:s/\s//}/*?_.[]-~=&;#%^(){}<>'"'"$!|'
@@ -55,7 +52,6 @@ HISTSIZE=10000
 SAVEHIST=100000
 setopt appendhistory nomatch notify interactivecomments
 unsetopt autocd beep extendedglob sharehistory
-bindkey -e
 
 function init_ssh_agent {
     if [ -z "$SSH_AUTH_SOCK" ]; then
