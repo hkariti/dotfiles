@@ -1,6 +1,7 @@
 export EDITOR="vim"
 export GOPATH=$HOME/golang
 if [ "`uname -s`" = "Darwin" ]; then
+    export EVENT_NOKQUEUE=1
     export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
     export LANG="en_US.UTF-8"
     export LC_ALL="en_US.UTF-8"
