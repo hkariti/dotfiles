@@ -1,95 +1,92 @@
-""" VUNDLE STUFF
-""" Vundle is a plugin to manage installtion of vim plugins
-
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call plug#begin()
 
 " let Vundle manage Vundle, required
-Bundle 'gmarik/vundle'
+Plug 'gmarik/vundle'
 
 """ PLUGINS
 " Fuzzy search files in the current directory tree/open files
-Bundle 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 " Auto-complete engine
-Bundle 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 " Syntax check
-Bundle 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 " bdelete without close window
-Bundle 'moll/vim-bbye'
+Plug 'moll/vim-bbye'
 
 " A lot of [X and ]X keymaps for previous/next stuff
-Bundle 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 " Delete, change and add surrounding characters around things
-Bundle 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " Allow repeating whole plugin maps with .
-Bundle 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 " Actions on word styles - case preserving substiture, coerction between name
 " styles, etc
-Bundle 'tpope/vim-abolish'
+Plug 'tpope/vim-abolish'
 
 " Golang
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 
 " Make navigation between tmux and vim panes use the same key
-Bundle 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 " Git plugin
-Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 " Dispatch for tests
-Bundle 'tpope/vim-dispatch'
+Plug 'tpope/vim-dispatch'
 " Auto-insert matching quotes/braces/backets when opening them
-Bundle 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 " Cool directory tree panel
-Bundle 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " Cool status line for vim
-Bundle 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " Snippets of boilerplate code
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 " Match tmux colors to vim colors
-Bundle 'edkolev/tmuxline.vim'
+Plug 'edkolev/tmuxline.vim'
 " Don't remember what that is
-Bundle 'Valloric/ListToggle'
+Plug 'Valloric/ListToggle'
 
 " Py.test integtration
-Bundle 'alfredodeza/pytest.vim'
+Plug 'alfredodeza/pytest.vim'
 
 " Ansible syntax support
-Bundle 'chase/vim-ansible-yaml'
+Plug 'chase/vim-ansible-yaml'
 
 " Javascript completion
-Bundle 'marijnh/tern_for_vim'
-Bundle 'moll/vim-node'
+Plug 'marijnh/tern_for_vim'
+Plug 'moll/vim-node'
 
 " Show functions and other tabs in sidebar
-Bundle 'Tagbar'
+Plug 'Tagbar'
 
 " Multiple cursors
-Bundle 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 
 " Custom text objects
-Bundle 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-user'
 
 " ai/aI ii/iI select indented block
-Bundle 'kana/vim-textobj-indent' 
+Plug 'kana/vim-textobj-indent' 
 
 " aq/iq select area between quotes
-Bundle 'beloglazov/vim-textobj-quotes'
+Plug 'beloglazov/vim-textobj-quotes'
 
 " au/iu/go select URLs
-Bundle 'jceb/vim-textobj-uri'
+Plug 'jceb/vim-textobj-uri'
 
 " ai/iv area between _ or CamelCase
-Bundle 'Julian/vim-textobj-variable-segment'
+Plug 'Julian/vim-textobj-variable-segment'
 
 " a,/i, select function parameters
-Bundle 'sgur/vim-textobj-parameter'
+Plug 'sgur/vim-textobj-parameter'
 
 " af/if area between a given character
-Bundle 'thinca/vim-textobj-between'
+Plug 'thinca/vim-textobj-between'
+
+Plug 'altercation/vim-colors-solarized'
+call plug#end()
 
 """ OTHER CONFIGS
 filetype plugin on
@@ -129,7 +126,6 @@ set laststatus=2
 
 " Nice 256 color scheme
 set t_Co=256
-Bundle 'altercation/vim-colors-solarized'
 " Config solarized to use 256 colors
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
