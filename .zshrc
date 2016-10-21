@@ -40,6 +40,14 @@ compinit
 # Fucking proper history nagivation
 bindkey "^[OA" up-line-or-history
 bindkey "^[OB" down-line-or-history
+bindkey "^U" backward-kill-line
+bindkey "^W" bash-backward-kill-word
+
+zle -N bash-backward-kill-word
+function bash-backward-kill-word {
+    local WORDCHARS="${WORDCHARS:s/\s//}/*?_.[]-~=&;#%^(){}<>'"'"$!|'
+    zle backward-kill-word
+}
 
 # Various settings
 HISTFILE=~/.histfile
