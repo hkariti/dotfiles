@@ -5,7 +5,7 @@ Plug 'gmarik/vundle'
 
 """ PLUGINS
 " Fuzzy search files in the current directory tree/open files
-Plug 'kien/ctrlp.vim'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 " Auto-complete engine
 Plug 'Valloric/YouCompleteMe'
 " Syntax check
@@ -148,6 +148,21 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*__pycache__*
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_cmd = 'CtrlPMixed'
 
+" FZF configs
+" https://github.com/junegunn/fzf/wiki/Examples-(vim)#filtered-voldfiles-and-open-buffers
+command! FZFMru call fzf#run({
+\ 'source':  reverse(s:all_files()),
+\ 'sink':    'edit',
+\ 'options': '-m -x +s',
+\ 'down':    '40%' })
+
+function! s:all_files()
+  return extend(
+  \ filter(copy(v:oldfiles),
+  \        "v:val !~ 'fugitive:\\|NERD_tree\\|^/tmp/\\|.git/'"),
+  \ map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), 'bufname(v:val)'))
+endfunction
+
 " tmux_navigator configs, I want to map my own nav keys
 let g:tmux_navigator_no_mappings = 1
 
@@ -182,6 +197,8 @@ nnoremap <silent> j :TmuxNavigateDown<cr>
 nnoremap <silent> k :TmuxNavigateUp<cr>
 nnoremap <silent> l :TmuxNavigateRight<cr>
 nnoremap <silent> \ :TmuxNavigatePrevious<cr>
+
+nmap <Leader>p :FZFMru<CR>
 
 " Snippets trigger
 let g:UltiSnipsExpandTrigger = "<c-L>"
