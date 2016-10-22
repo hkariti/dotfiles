@@ -7,7 +7,11 @@ Plug 'gmarik/vundle'
 " Fuzzy search files in the current directory tree/open files
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 " Auto-complete engine
-Plug 'Valloric/YouCompleteMe'
+if has("nvim")
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Valloric/YouCompleteMe'
+end
 " Syntax check
 Plug 'scrooloose/syntastic'
 " bdelete without close window
