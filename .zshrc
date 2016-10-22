@@ -3,7 +3,6 @@ export TERM=xterm-256color
 
 source <(antibody init)
 antibody bundle < ~/repo/dotfiles/plugins.zsh
-source ~/repo/dotfiles/git.zsh
 source ~/repo/dotfiles/clean.zsh-theme
 
 # Completion settings
