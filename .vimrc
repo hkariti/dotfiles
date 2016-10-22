@@ -36,7 +36,7 @@ Plug 'tpope/vim-dispatch'
 " Auto-insert matching quotes/braces/backets when opening them
 Plug 'Raimondi/delimitMate'
 " Cool directory tree panel
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind']  }
 " Cool status line for vim
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
