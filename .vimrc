@@ -111,6 +111,8 @@ set smartcase
 
 set shell=/bin/bash
 
+autocmd BufNewFile,BufRead *.s11 set filetype=asmpdp11
+
 " Close documentation popup when leaving insert
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
