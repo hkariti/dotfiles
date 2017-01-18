@@ -7,3 +7,5 @@
 
 [merge]
     tool = vimdiff
+[alias]
+	pushf = push --force-with-lease
