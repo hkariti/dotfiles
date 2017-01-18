@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for i in ~/Downloads/*p.psarc; do
+    basename=${i%p.psarc}
+    [ -e "${basename}m.psarc" ] && continue
+    mono ~/Downloads/RocksmithCustomSongToolkit.app/Contents/Resources/dlcconverter.exe --sp Pc --tp Mac -i "$i" --appid=248750 || echo $i >> /tmp/failed
+done
+mv ~/Downloads/*m.psarc ~/"Library/Application Support/Steam/SteamApps/common/Rocksmith2014/dlc/cdlc"
