@@ -30,6 +30,9 @@ Plug 'tpope/vim-abolish'
 " Golang
 Plug 'fatih/vim-go'
 
+" C/C++
+Plug 'vim-scripts/Conque-GDB', { 'for': ['c', 'cpp'] }
+
 " Make navigation between tmux and vim panes use the same key
 Plug 'christoomey/vim-tmux-navigator'
 " Git plugin
