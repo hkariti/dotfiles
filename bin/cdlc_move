@@ -2,7 +2,12 @@
 
 for i in ~/Downloads/*p.psarc; do
     basename=${i%p.psarc}
-    [ -e "${basename}m.psarc" ] && continue
+    macname=${basename}m.psarc
+    [ -e "${macname}" ] && continue
     mono ~/Downloads/RocksmithCustomSongToolkit.app/Contents/Resources/dlcconverter.exe --sp Pc --tp Mac -i "$i" --appid=248750 || echo $i >> /tmp/failed
+    if [ -e "${macname}" ]; then
+        mv $i $i.converted
+    fi
+
 done
 mv ~/Downloads/*m.psarc ~/"Library/Application Support/Steam/SteamApps/common/Rocksmith2014/dlc/cdlc"
