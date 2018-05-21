@@ -172,3 +172,9 @@ fi
 
 # added by travis gem
 [ -f /home/hkariti/.travis/travis.sh ] && source /home/hkariti/.travis/travis.sh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# added by travis gem
+[ -f /Users/hkariti/.travis/travis.sh ] && source /Users/hkariti/.travis/travis.sh
