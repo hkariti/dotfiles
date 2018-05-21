@@ -95,7 +95,7 @@ Plug 'sgur/vim-textobj-parameter'
 " af/if area between a given character
 Plug 'thinca/vim-textobj-between'
 
-Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 call plug#end()
 
 """ OTHER CONFIGS
@@ -136,12 +136,13 @@ autocmd FileType ansible map K :!ansible-doc <cword><CR>
 let g:tmuxline_powerline_separators = 0
 set laststatus=2
 
-" Nice 256 color scheme
-set t_Co=256
-" Config solarized to use 256 colors
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-colorscheme solarized
+" Nice rgb colors
+set termguicolors
+"set t_Co=256
+" Config solarized to use rgb colors
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans=1
+colorscheme solarized8
 
 " netrw config
 "let g:netrw_banner       = 0
