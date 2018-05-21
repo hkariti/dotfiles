@@ -1,7 +1,7 @@
-# ~/.tmuxinator/playbooks.yml
+# ~/.tmuxinator/general.yml
 
-name: playbooks
-root: ~/repo/bigpanda/playbooks
+name: money
+root: ~/repo
 
 # Optional tmux socket
 # socket_name: foo
@@ -19,7 +19,4 @@ root: ~/repo/bigpanda/playbooks
 # tmux_command: byobu
 
 windows:
-    - main:
-        layout: main-horizontal
-        panes:
-          - echo
+    - django:
