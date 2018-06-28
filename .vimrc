@@ -68,9 +68,6 @@ Plug 'chase/vim-ansible-yaml'
 Plug 'marijnh/tern_for_vim'
 Plug 'moll/vim-node'
 
-" Show functions and other tabs in sidebar
-Plug 'Tagbar'
-
 " Multiple cursors
 Plug 'terryma/vim-multiple-cursors'
 
