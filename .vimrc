@@ -13,7 +13,9 @@ else
     Plug 'Valloric/YouCompleteMe'
 end
 " Syntax check
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
+" ALE for async linting
+Plug 'w0rp/ale'
 " bdelete without close window
 Plug 'moll/vim-bbye'
 
@@ -51,12 +53,12 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind']  }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Snippets of boilerplate code
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 " Match tmux colors to vim colors
 Plug 'edkolev/tmuxline.vim'
 " Don't remember what that is
-Plug 'Valloric/ListToggle'
+"Plug 'Valloric/ListToggle'
 
 " Py.test integtration
 Plug 'alfredodeza/pytest.vim'
@@ -83,7 +85,7 @@ Plug 'beloglazov/vim-textobj-quotes'
 " au/iu/go select URLs
 Plug 'jceb/vim-textobj-uri'
 
-" ai/iv area between _ or CamelCase
+" av/iv area between _ or CamelCase
 Plug 'Julian/vim-textobj-variable-segment'
 
 " a,/i, select function parameters
