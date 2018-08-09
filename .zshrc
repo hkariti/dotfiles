@@ -139,9 +139,13 @@ init_ssh_agent
 
 #prompt="%n@%m:%~%# "
 
-
-export NVM_DIR="/Users/hkariti/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# Lazy load nvm
+function nvm {
+    unset nvm
+    export NVM_DIR="/Users/hkariti/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    nvm "$@"
+}
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
