@@ -1,3 +1,4 @@
+.DS_Store
 # Custom binaries from other sources I don't want to commit
 bin/create-alerts.sc
 bin/j2y
@@ -5,3 +6,5 @@ bin/technion_video_dl
 bin/y2j
 bin/y2j.sh
 bin/yq
+bin/
+
