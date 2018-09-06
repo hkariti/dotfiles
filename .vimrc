@@ -28,9 +28,11 @@ Plug 'tpope/vim-repeat'
 " Actions on word styles - case preserving substiture, coerction between name
 " styles, etc
 Plug 'tpope/vim-abolish'
+" Tmux integration
+Plug 'tpope/vim-tbone'
 
 " Golang
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'for': ['go'] }
 
 " C/C++
 Plug 'vim-scripts/Conque-GDB', { 'for': ['c', 'cpp'] }
@@ -202,6 +204,9 @@ nmap <Leader>N :NERDTreeFind<CR>
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
+" copy and paste to and from tmux buffer
+nmap ty :Tyank<CR>
+nmap tp :Tput<CR>
 
 " Same as tmux, alt-hjkl moves between panes
 nnoremap <silent> h :TmuxNavigateLeft<cr>
