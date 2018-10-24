@@ -205,6 +205,7 @@ nmap <Leader>N :NERDTreeFind<CR>
 cmap w!! w !sudo tee > /dev/null %
 
 " copy and paste to and from tmux buffer
+vmap ty :'<,'>Tyank<CR>
 nmap ty :Tyank<CR>
 nmap tp :Tput<CR>
 
