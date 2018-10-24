@@ -147,8 +147,12 @@ function nvm {
     nvm "$@"
 }
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# Lazy load rvm
+function rvm {
+    unset -f rvm
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+    rvm "$@"
+}
 
 # added by travis gem
 [ -f /Users/hkariti/.travis/travis.sh ] && source /Users/hkariti/.travis/travis.sh
