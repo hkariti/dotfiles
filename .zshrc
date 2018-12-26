@@ -141,7 +141,7 @@ init_ssh_agent
 
 # Lazy load nvm
 function nvm {
-    unset nvm
+    unset -f nvm
     export NVM_DIR="/Users/hkariti/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
     nvm "$@"
