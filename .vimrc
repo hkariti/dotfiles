@@ -7,11 +7,11 @@ Plug 'gmarik/vundle'
 " Fuzzy search files in the current directory tree/open files
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 " Auto-complete engine
-if has("nvim")
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Valloric/YouCompleteMe'
-end
+Plug 'maralla/completor.vim'
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+
 " Syntax check
 "Plug 'scrooloose/syntastic'
 " ALE for async linting
@@ -39,6 +39,9 @@ Plug 'vim-scripts/Conque-GDB', { 'for': ['c', 'cpp'] }
 
 " Typescript
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
+
+" Python
+Plug 'davidhalter/jedi-vim', { 'for': ['python'] }
 
 " Make navigation between tmux and vim panes use the same key
 Plug 'christoomey/vim-tmux-navigator'
@@ -123,9 +126,9 @@ autocmd BufNewFile,BufRead *.s11 set filetype=asmpdp11
 " Close documentation popup when leaving insert
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-" Set tabwidth to 2 for javascript
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType javascript setlocal omnifunc=tern#Complete
+" Set tabwidth to 2 for javascript and typescript
+autocmd FileType javascript,typescript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+" autocmd FileType javascript setlocal omnifunc=tern#Complete
 autocmd FileType javascript map gd :TernDef<CR>
 
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
