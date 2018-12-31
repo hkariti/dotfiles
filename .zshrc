@@ -60,7 +60,7 @@ function init_ssh_agent {
         export SSH_AUTH_SOCK SSH_AGENT_PID
     fi
 
-    ssh-add -l &>/dev/null || ssh-add -t $((60*60*1))
+    ssh-add -l &>/dev/null || ssh-add -t $((60*60*12))
 }
 
 function commit_dotfiles() (
