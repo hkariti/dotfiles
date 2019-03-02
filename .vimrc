@@ -40,8 +40,9 @@ Plug 'vim-scripts/Conque-GDB', { 'for': ['c', 'cpp'] }
 " Typescript
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript'] }
 
-" Python
+" Python (requires pip install jedi)
 Plug 'davidhalter/jedi-vim', { 'for': ['python'] }
+let g:completor_python_binary='/usr/bin/python'
 
 " Make navigation between tmux and vim panes use the same key
 Plug 'christoomey/vim-tmux-navigator'
