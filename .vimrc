@@ -30,6 +30,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-abolish'
 " Tmux integration
 Plug 'tpope/vim-tbone'
+" Create screenshots of code commands: :Silicon :SiliconHighlight
+Plug 'segeljakt/vim-silicon'
 
 " Golang
 Plug 'fatih/vim-go', { 'for': ['go'] }
