@@ -10,4 +10,4 @@ for i in ~/Downloads/*p.psarc; do
     fi
 
 done
-mv ~/Downloads/*m.psarc ~/"Library/Application Support/Steam/SteamApps/common/Rocksmith2014/dlc/cdlc"
+mv -v ~/Downloads/*m.psarc ~/"Library/Application Support/Steam/SteamApps/common/Rocksmith2014/dlc/cdlc"
