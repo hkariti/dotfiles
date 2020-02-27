@@ -10,8 +10,12 @@ if [ "`uname -s`" = "Darwin" ]; then
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
     tmux set-environment -g PATH "$PATH"
-elif [ "`uname -s`" = "Linux" ]; then
-    export VAGRANT_DEFAULT_PROVIDER=lxc
+elif [ "`uname -s`" = "Linux" ] && hostname | grep -q hep.technion; then
+    # Atlas cluster
+    source /storage/md_kaplan/anaconda3/bin/activate
+    export MKL_NUM_THREADS="1"
+    export NUMEXPR_NUM_THREADS="1"
+    export OMP_NUM_THREADS="1"
 fi
 
 if [[ $SHLVL == 1 && ! -o LOGIN  ]]; then
