@@ -33,6 +33,9 @@ Plug 'tpope/vim-tbone'
 " Create screenshots of code commands: :Silicon :SiliconHighlight
 Plug 'segeljakt/vim-silicon'
 
+" elm
+Plug 'elmcast/elm-vim', { 'for': ['elm'] }
+
 " Golang
 Plug 'fatih/vim-go', { 'for': ['go'] }
 
