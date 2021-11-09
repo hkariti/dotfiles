@@ -161,3 +161,10 @@ function rvm {
 
 # added by travis gem
 [ -f /Users/hkariti/.travis/travis.sh ] && source /Users/hkariti/.travis/travis.sh
+
+# Load conda if not loaded
+function conda {
+    unset -f conda
+    source ~/anaconda3/bin/activate
+    conda "$@"
+}
