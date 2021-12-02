@@ -135,7 +135,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " Set tabwidth to 2 for javascript and typescript
 autocmd FileType javascript,typescript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " autocmd FileType javascript setlocal omnifunc=tern#Complete
-autocmd FileType javascript map gd :TernDef<CR>
+autocmd FileType javascript,typescript map gd :TernDef<CR>
 
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType yaml map K :!ansible-doc <cword><CR>
