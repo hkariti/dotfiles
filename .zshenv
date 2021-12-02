@@ -1,6 +1,5 @@
 export EDITOR="vim"
 export GOPATH=$HOME/golang
-export AWS_PROFILE=dev-k8s
 if [ "`uname -s`" = "Darwin" ]; then
     export EVENT_NOKQUEUE=1
     export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
