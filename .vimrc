@@ -212,7 +212,6 @@ nmap <Leader>N :NERDTreeFind<CR>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
-
 " copy and paste to and from tmux buffer
 vmap ty :'<,'>Tyank<CR>
 nmap ty :Tyank<CR>
@@ -226,6 +225,7 @@ nnoremap <silent> l :TmuxNavigateRight<cr>
 nnoremap <silent> \ :TmuxNavigatePrevious<cr>
 
 nmap <Leader>p :FZFMru<CR>
+set backspace=indent,eol,start  " more powerful backspacing
 
 " Snippets trigger
 let g:UltiSnipsExpandTrigger = "<c-L>"
