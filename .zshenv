@@ -4,7 +4,7 @@ if [ "`uname -s`" = "Darwin" ]; then
     export LANG="en_US.UTF-8"
     export LC_ALL="en_US.UTF-8"
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-    tmux set-environment -g PATH "$PATH"
+    /usr/local/bin/tmux set-environment -g PATH "$PATH"
 elif [ "`uname -s`" = "Linux" ]; then
     export VAGRANT_DEFAULT_PROVIDER=lxc
 fi
