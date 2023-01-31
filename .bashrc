@@ -154,8 +154,6 @@ TERM=xterm-256color
 
 alias generate_hosts="{ cat /etc/hosts.base; sed -n '/###/,$ p' hosts/hosts-with-locals; } | sudo tee /etc/hosts"
 
-init_ssh_agent
-
 alias devbox='cd ~/repo/bigpanda/operations/devbox'
 alias 'tmux-ttys'='tmux list-panes -a -F "#{session_name} #{window_index}:#{window_name}.#{pane_index} #{pane_tty}"'
 
