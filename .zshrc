@@ -139,3 +139,5 @@ function conda {
     source ~/anaconda3/bin/activate
     conda "$@"
 }
+
+tmux set-environment -g PATH "$PATH"
