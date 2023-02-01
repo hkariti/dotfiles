@@ -1,6 +1,11 @@
 if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="white"; fi
 
-PROMPT='%{$fg[$NCOLOR]%}%B%n%b%{$reset_color%}:%{$fg[blue]%}%B%c/%b%{$reset_color%} $(git_super_status)%(!.#.$) '
+if [[ "$HOST" = fancy-h* ]]; then
+    USERNAME_PROMPT="%n"
+else
+    USERNAME_PROMPT="%n@%m"
+fi
+PROMPT='%{$fg[$NCOLOR]%}%B${USERNAME_PROMPT}%b%{$reset_color%}:%{$fg[blue]%}%B%c/%b%{$reset_color%} $(git_super_status)%(!.#.$) '
 RPROMPT='[%*]'
 
 # git theming
