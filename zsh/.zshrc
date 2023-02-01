@@ -2,11 +2,12 @@ stty -ixon
 export TERM=xterm-256color
 
 # source antidote and load plugins
+DOTFILES_DIR=${${(%):-%N}:A:h} # ${(%):-%N} is the location of current file (zshrc)
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
-zstyle ':antidote:bundle' file ~/repo/dotfiles/plugins.zsh
+zstyle ':antidote:bundle' file $DOTFILES_DIR/plugins.zsh
 antidote load
 
-source ~/repo/dotfiles/clean.zsh-theme
+source $DOTFILES_DIR/clean.zsh-theme
 
 # Completion settings
 zstyle ':completion:*' auto-description 'specify: %d'
