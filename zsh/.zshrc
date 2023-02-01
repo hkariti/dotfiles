@@ -144,7 +144,7 @@ function rvm {
 # Load conda if not loaded
 function conda {
     unset -f conda
-    source ~/miniconda3/etc/profile.d/conda.sh
+    source /opt/conda/bin/activate
     conda "$@"
 }
 
