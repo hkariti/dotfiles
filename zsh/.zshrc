@@ -148,6 +148,8 @@ function conda {
     conda "$@"
 }
 
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
 tmux set-environment -g PATH "$PATH"
 
 if [ -n "$TMUX" ]; then

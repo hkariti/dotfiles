@@ -4,6 +4,7 @@
         insteadOf = git://
 [user]
 	name = Hagai Kariti
+	email = hagai@riseup.co.il
 
 [merge]
     tool = vimdiff

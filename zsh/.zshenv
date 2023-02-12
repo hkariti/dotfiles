@@ -11,3 +11,9 @@ fi
 if [[ $SHLVL == 1 && ! -o LOGIN  ]]; then
     source ~/.zpath
 fi
+
+export LOCAL_WHATSAPP_NUMBER=972525513042
+export WHATSAPP_NUMBER=972587786028
+export WHATSAPP_CERTIFICATE=blablablalbla
+export SERVICES=~/repo/riseup
+export BOB_DIR=~/repo/riseup/bob
