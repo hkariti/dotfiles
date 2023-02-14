@@ -146,7 +146,8 @@ autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " Using BufReadPre since we need to set this option before VimTex is loaded
 " and FileType event is too late
 autocmd BufReadPre *.tex let g:vimtex_view_method = 'zathura'
-
+" Terraform
+autocmd FileType terraform setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " }}}
 
 """ KEY MAPS {{{
