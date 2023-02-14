@@ -163,6 +163,8 @@ nmap gd :ALEGoToDefinition<CR>
 " Toggle NERDTree
 nmap <Leader>n :NERDTreeToggle<CR>
 nmap <Leader>N :NERDTreeFind<CR>
+" Open tig in a split
+command Tig :vert term ++close tig
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
