@@ -134,12 +134,12 @@ set smartcase
 
 " Language specific settings {{{
 " Python
-autocmd Filetype python let g:repl_program.python = 'ipython'|let g:repl_ipython_version = '8'
+autocmd Filetype python let g:repl_program.python = 'ipython'
+autocmd Filetype python let g:repl_ipython_version = '8'
 " Javascript
 autocmd FileType javascript,typescript setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType javascript,typescript map gd :TernDef<CR>
 " Ansible
-autocmd FileType ansible map K :!ansible-doc <cword><CR>
+autocmd FileType ansible nnoremap <buffer> K :!ansible-doc <cword><CR>
 " Yaml
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " LaTEX
@@ -150,6 +150,9 @@ autocmd BufReadPre *.tex let g:vimtex_view_method = 'zathura'
 " }}}
 
 """ KEY MAPS {{{
+" Edit vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 " Close current file but keep the window open
 nmap <Leader>c :Bdelete<CR>
 " Go to previous buffer
@@ -174,4 +177,8 @@ nnoremap <silent> k :TmuxNavigateUp<cr>
 nnoremap <silent> l :TmuxNavigateRight<cr>
 nnoremap <silent> \ :TmuxNavigatePrevious<cr>
 
+" Shell-like movements in command line
+cnoremap <esc>h <S-left>
+cnoremap <esc>l <S-right>
+cnoremap <C-A> <C-B>
 " }}}
