@@ -22,8 +22,7 @@ root: ~/repo/technion
 # startup_window: logs
 
 windows:
-  - editor:
-      layout: even-horizontal
+  - jupyter:
       panes:
-        - vim
-        - echo
+        - jupyter notebook  --no-browser
+  - shell:
