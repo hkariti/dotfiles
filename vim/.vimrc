@@ -3,6 +3,7 @@ filetype plugin on
 filetype indent on
 syntax on
 set modelines=1
+set laststatus=2 " Always show the status line
 " Close documentation popup when leaving insert
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 set backspace=indent,eol,start  " more powerful backspacing
@@ -43,7 +44,6 @@ Plug 'tpope/vim-abolish'
 " Tmux
 Plug 'tpope/vim-tbone'
 Plug 'christoomey/vim-tmux-navigator' " Make navigation between tmux and vim panes use the same key
-Plug 'edkolev/tmuxline.vim' " Match tmux colors to vim colors
 " git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter' " Mark which lines were changed and git-add them
@@ -73,10 +73,6 @@ call plug#end()
 " airline {{{
 " Add buffer number (%n) before filename in status line
 let g:airline_section_c="%<%n %f%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#"
-" }}}
-" tmuxline {{{
-let g:tmuxline_powerline_separators = 0 " No separator chars in statusline
-set laststatus=2 " Always show the status line
 " }}}
 " NERDTree {{{
 let NERDTreeIgnore = ['\.pyc$']
