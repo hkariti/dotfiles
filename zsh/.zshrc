@@ -142,3 +142,12 @@ function conda {
 }
 
 tmux set-environment -g PATH "$PATH"
+
+if [ -n "$TMUX" ]; then
+  function refresh_env {
+    export $(tmux show-environment | grep "^SSH_AUTH_SOCK")
+    export $(tmux show-environment | grep "^DISPLAY")
+  }
+else
+  function refresh_env { }
+fi
