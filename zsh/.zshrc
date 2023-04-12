@@ -108,7 +108,7 @@ function root {
         SESSION_ROOT=$root
         echo Autodetected session root to be $SESSION_ROOT
     fi
-    eval cd $SESSION_ROOT
+    cd ${~SESSION_ROOT}
 }
 
 help () {
