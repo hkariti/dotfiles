@@ -57,8 +57,10 @@ Plug 'davidhalter/jedi-vim', { 'for': ['python'] }
 
 Plug 'elmcast/elm-vim', { 'for': ['elm'] }
 Plug 'fatih/vim-go', { 'for': ['go'] }
-
-"" Custom text objects
+" Latex
+Plug 'lervag/vimtex'
+" }}}
+"" Custom text objects {{{
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent' " ai/aI ii/iI select indented block
 Plug 'beloglazov/vim-textobj-quotes' " aq/iq select area between quotes
@@ -66,6 +68,7 @@ Plug 'jceb/vim-textobj-uri' " au/iu/go select URLs
 Plug 'Julian/vim-textobj-variable-segment' " av/iv area between _ or CamelCase
 Plug 'sgur/vim-textobj-parameter' " a,/i, select function parameters
 Plug 'thinca/vim-textobj-between' " af/if area between a given character
+" }}}
 "" }}}
 call plug#end()
 """ }}}
@@ -139,6 +142,11 @@ autocmd FileType javascript,typescript map gd :TernDef<CR>
 autocmd FileType ansible map K :!ansible-doc <cword><CR>
 " Yaml
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+" LaTEX
+" Using BufReadPre since we need to set this option before VimTex is loaded
+" and FileType event is too late
+autocmd BufReadPre *.tex let g:vimtex_view_method = 'zathura'
+
 " }}}
 
 """ KEY MAPS {{{
