@@ -39,6 +39,9 @@ Plug 'Raimondi/delimitMate' " Auto-insert matching quotes/braces/backets
 " Actions on word styles - case preserving substiture, coerction between name
 " styles, etc
 Plug 'tpope/vim-abolish'
+
+" Follow symlinks. Mostly useful on versioned dotfiles
+Plug 'aymericbeaumet/vim-symlink'
 "" }}}
 "" Tool intergations {{{
 " Tmux
