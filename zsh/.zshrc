@@ -127,6 +127,13 @@ function nvm {
     nvm "$@"
 }
 
+# Insert GITHUB_TOKEN variable to npm
+function npm {
+    (
+    export GITHUB_TOKEN=`op item get krjcptuvcnf7tatf6d4r6qkcgq --fields npm`
+    exec command npm "$@"
+    )
+}
 # Lazy load rvm
 function rvm {
     unset -f rvm
@@ -151,3 +158,5 @@ if [ -n "$TMUX" ]; then
 else
   function refresh_env { }
 fi
+
+alias vzf="fd -H -t f | fzf --preview='bat -f {}' --bind 'enter:become(vim {})'"
