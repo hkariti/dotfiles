@@ -115,6 +115,9 @@ let g:delimitMate_expand_cr=2
 " When entering spaces afterh delimiters, enter them in the otehr end
 let g:delimitMate_expand_space=1
 " "}}}
+" netrw {{{
+let g:netrw_silent=1
+" }}}
 " }}}
 
 " Saner tabs {{{
