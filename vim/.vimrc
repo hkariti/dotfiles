@@ -2,7 +2,7 @@
 filetype plugin on
 filetype indent on
 syntax on
-set modelines=1
+set modelines=2
 set laststatus=2 " Always show the status line
 " Close documentation popup when leaving insert
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
