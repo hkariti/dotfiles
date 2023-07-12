@@ -25,7 +25,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'lifepillar/vim-solarized8'
 " Fuzzy search files in the current directory tree/open files
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug trim(system('brew --prefix')) . '/opt/fzf' | Plug 'junegunn/fzf.vim'
 
 " Visualize undo tree
 Plug 'simnalamburt/vim-mundo'

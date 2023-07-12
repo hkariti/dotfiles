@@ -1,5 +1,6 @@
 stty -ixon
 export TERM=xterm-256color
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
 
 # source antidote and load plugins
 DOTFILES_DIR=${${(%):-%N}:A:h} # ${(%):-%N} is the location of current file (zshrc)
@@ -10,6 +11,9 @@ antidote load
 source $DOTFILES_DIR/clean.zsh-theme
 
 # Completion settings
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+fi
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _list _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' completions 1
