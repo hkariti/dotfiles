@@ -7,6 +7,8 @@ set laststatus=2 " Always show the status line
 " Close documentation popup when leaving insert
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 set backspace=indent,eol,start  " more powerful backspacing
+set mouse=a " Enable scrolling, selecting and focusing with the mouse
+set ttymouse=sgr " The better mouse encoding
 
 """ PLUGINS {{{
 call plug#begin()
