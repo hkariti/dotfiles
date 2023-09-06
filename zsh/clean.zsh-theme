@@ -6,7 +6,6 @@ else
     USERNAME_PROMPT="%n@%m"
 fi
 PROMPT='%{$fg[$NCOLOR]%}%B${USERNAME_PROMPT}%b%{$reset_color%}:%{$fg[blue]%}%B%c/%b%{$reset_color%} $(git_super_status)%(!.#.$) '
-RPROMPT='[%*]'
 
 # git theming
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}(%{$fg_no_bold[yellow]%}%B"
