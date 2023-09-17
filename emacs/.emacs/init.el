@@ -6,13 +6,6 @@
 (setq help-window-select t)
 (use-package vterm
     :ensure t)
-(add-hook 'after-make-frame-functions (lambda (frame) (select-frame frame) (vterm t)))
-(add-hook 'tab-bar-tab-prevent-close-functions '(lambda (w islast) (when islast t)))
-(add-hook 'vterm-exit-functions '(lambda (a b) (kill-buffer) (if (= 1 (count-windows)) (tab-close) (delete-window))))
-(keymap-global-set "s-S" '(lambda () (interactive) (split-window-below) (vterm t)))
-(keymap-global-set "s-|" '(lambda () (interactive) (split-window-right) (vterm t)))
-(keymap-global-set "s-C" 'mux-new-window)
-;(setq initial-major-mode 'vterm-mode)
 (use-package doom-themes
   :ensure t
   :config
@@ -24,9 +17,54 @@
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config))
 
-(defun mux-new-window ()
+(defun mux-close-tab-hook (w islast)
+  (when islast
+    (unless (= 1 (length (frame-list))) (delete-frame))
+    (switch-to-buffer "*scratch*")
+    t))
+
+(defun mux-new-frame-hook (frame)
+  (select-frame frame)
+  (mux-create))
+
+(defun mux-vterm-exit-hook (a b)
+  (kill-buffer)
+  (if (= 1 (count-windows))
+    (tab-close)
+    (delete-window)))
+
+(defun mux-create (&optional name command)
+  "Create a new terminal buffer"
+  (interactive)
+  (let ((vterm-shell (if command
+                       (format "%s -c %s" vterm-shell (shell-quote-argument command))
+                       vterm-shell))
+        (name (or name t)))
+      (vterm name)))
+
+(defun mux-split-window-horizontal (&optional name command)
+  (interactive)
+  (split-window-below)
+  (mux-create name command))
+
+(defun mux-split-window-vertical (&optional name command)
+  (interactive)
+  (split-window-right)
+  (mux-create name command))
+
+(defun mux-init-hooks ()
+    (add-hook 'vterm-exit-functions 'mux-vterm-exit-hook))
+    (add-hook 'after-make-frame-functions 'mux-new-frame-hook)
+    (add-hook 'tab-bar-tab-prevent-close-functions 'mux-close-tab-hook)
+
+(defun mux-new-window (&optional name command)
   (interactive)
   (unless (string= (buffer-name) "*scratch*") (tab-new))
-  (vterm t))
+  (mux-create name command))
 
+(keymap-global-set "s-S" 'mux-split-window-horizontal)
+(keymap-global-set "s-|" 'mux-split-window-vertical)
+(keymap-global-set "s-C" 'mux-new-window)
+
+(mux-init-hooks)
 (mux-new-window)
