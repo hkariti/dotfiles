@@ -36,12 +36,15 @@
 (defun mux-create (&optional name command remain-on-exit)
   "Create a new terminal buffer"
   (interactive)
-  (let ((vterm-shell (if command
-                       (format "%s -c %s" vterm-shell (shell-quote-argument command))
-                       vterm-shell))
-        (name (or name t))
-        (vterm-kill-buffer-on-exit (if remain-on-exit nil vterm-kill-buffer-on-exit)))
-      (vterm name)))
+  (let* (
+         (major-mode 'fundamental-mode)
+         (buf (generate-new-buffer vterm-buffer-name)))
+    (with-current-buffer buf
+      (setq-local vterm-shell (if command (format "%s -c %s" vterm-shell (shell-quote-argument command)) vterm-shell))
+      (setq-local vterm-kill-buffer-on-exit (if remain-on-exit nil vterm-kill-buffer-on-exit))
+      (vterm-mode)
+    )
+    buf))
 
 (defun mux-split-window-horizontal (&optional name command remain-on-exit)
   (interactive)
@@ -54,6 +57,8 @@
   (mux-create name command remain-on-exit))
 
 (defun mux-init-hooks ()
+    (put 'vterm-shell 'permanent-local t)
+    (put 'vterm-kill-buffer-on-exit 'permanent-local t)
     (add-hook 'kill-buffer-hook 'mux-kill-buffer-hook))
     (add-hook 'after-make-frame-functions 'mux-new-frame-hook)
     (add-hook 'tab-bar-tab-prevent-close-functions 'mux-close-tab-hook)
