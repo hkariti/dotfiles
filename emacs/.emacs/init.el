@@ -33,8 +33,15 @@
     (tab-close)
     (delete-window)))
 
+(defun mux-init-hooks ()
+    (put 'vterm-shell 'permanent-local t)
+    (put 'vterm-kill-buffer-on-exit 'permanent-local t)
+    (add-hook 'kill-buffer-hook 'mux-kill-buffer-hook))
+    (add-hook 'after-make-frame-functions 'mux-new-frame-hook)
+    (add-hook 'tab-bar-tab-prevent-close-functions 'mux-close-tab-hook)
+
 (defun mux-create (&optional name command remain-on-exit)
-  "Create a new terminal buffer"
+  "Create a new terminal buffer in the background"
   (interactive)
   (let* (
          (major-mode 'fundamental-mode)
@@ -46,31 +53,32 @@
     )
     buf))
 
-(defun mux-split-window-horizontal (&optional name command remain-on-exit)
+(defun mux-create-and-switch (&optional name command remain-on-exit)
+  "Create a new terminal buffer and switch the current window to it"
   (interactive)
-  (split-window-below)
-  (mux-create name command remain-on-exit))
+  (pop-to-buffer-same-window (mux-create name command remain-on-exit)))
+
+(defun mux-split-window-horizontal (&optional name command remain-on-exit)
+  "Create a new terminal buffer in a split below the current window"
+  (interactive)
+  (split-window nil nil 'above)
+  (mux-create-and-switch name command remain-on-exit))
 
 (defun mux-split-window-vertical (&optional name command remain-on-exit)
+  "Create a new terminal buffer in a split to the right of the current window"
   (interactive)
-  (split-window-right)
-  (mux-create name command remain-on-exit))
+  (split-window nil nil 'left)
+  (mux-create-and-switch name command remain-on-exit))
 
-(defun mux-init-hooks ()
-    (put 'vterm-shell 'permanent-local t)
-    (put 'vterm-kill-buffer-on-exit 'permanent-local t)
-    (add-hook 'kill-buffer-hook 'mux-kill-buffer-hook))
-    (add-hook 'after-make-frame-functions 'mux-new-frame-hook)
-    (add-hook 'tab-bar-tab-prevent-close-functions 'mux-close-tab-hook)
-
-(defun mux-new-window (&optional name command remain-on-exit)
+(defun mux-new-tab (&optional name command remain-on-exit)
+  "Create a new terminal buffer in a new tab"
   (interactive)
   (unless (string= (buffer-name) "*scratch*") (tab-new))
-  (mux-create name command remain-on-exit))
+  (mux-create-and-switch name command remain-on-exit))
 
 (keymap-global-set "s-S" 'mux-split-window-horizontal)
 (keymap-global-set "s-|" 'mux-split-window-vertical)
-(keymap-global-set "s-C" 'mux-new-window)
+(keymap-global-set "s-C" 'mux-new-tab)
 
 (mux-init-hooks)
-(mux-new-window)
+(mux-new-tab)
