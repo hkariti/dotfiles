@@ -1,5 +1,6 @@
 export EDITOR="vim"
 export GOPATH=$HOME/golang
+export DVC_PAGER='bat -p --wrap=never --color=never'
 if [ "`uname -s`" = "Darwin" ]; then
     export LANG="en_US.UTF-8"
     export LC_ALL="en_US.UTF-8"

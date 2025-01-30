@@ -25,7 +25,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'lifepillar/vim-solarized8'
 " Fuzzy search files in the current directory tree/open files
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
 
 " Visualize undo tree
 Plug 'simnalamburt/vim-mundo'
@@ -129,8 +129,10 @@ set expandtab " Use spaces and not tabs
 " Visuals and terminal {{{
 colorscheme solarized8
 set bg=dark " Terminal is dark
-set termguicolors " rgb colors
-set shell=/bin/bash
+"set termguicolors
+set t_Co=256
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
 " }}}
 " Search {{{
 " lower case==ignore case when searching

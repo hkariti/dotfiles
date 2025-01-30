@@ -1,5 +1,5 @@
 stty -ixon
-export TERM=xterm-256color
+#export TERM=xterm-256color
 
 # source antidote and load plugins
 DOTFILES_DIR=${${(%):-%N}:A:h} # ${(%):-%N} is the location of current file (zshrc)
@@ -152,9 +152,10 @@ tmux set-environment -g PATH "$PATH"
 
 if [ -n "$TMUX" ]; then
   function refresh_env {
-    export $(tmux show-environment | grep "^SSH_AUTH_SOCK")
-    export $(tmux show-environment | grep "^DISPLAY")
+    export $(tmux show-environment | grep "^SSH_AUTH_SOCK") >/dev/null
+    export $(tmux show-environment | grep "^DISPLAY") >/dev/null
   }
+  precmd() { refresh_env; }
 else
   function refresh_env { }
 fi
