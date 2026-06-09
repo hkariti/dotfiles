@@ -1,3 +1,4 @@
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
 export PATH=$PATH:~/.cargo/bin:~/bin
 #if [ "`uname -s`" = "Darwin" ]; then
 #    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
