@@ -97,22 +97,6 @@ function realpath {
     esac
 }
 
-function root {
-    if [ "$1" ]; then
-        SESSION_ROOT=`realpath "$1"`
-        echo Session root is now $SESSION_ROOT
-    fi
-    if [ -z "$SESSION_ROOT" ]; then
-        tmux_session=`tmux display-message -p '#S'`
-        [ -z "$tmux_session" ] && return
-        root=`grep root: ~/.tmuxinator/"$tmux_session".yml | cut -d' ' -f 2-`
-        [ -z "$root" ] && return
-        SESSION_ROOT=$root
-        echo Autodetected session root to be $SESSION_ROOT
-    fi
-    cd ${~SESSION_ROOT}
-}
-
 help () {
         man zshbuiltins | sed -ne "s/.//g; /^       $1/,/^\$/{s/       //; p;}"
 }
@@ -129,25 +113,13 @@ function nvm {
     nvm "$@"
 }
 
-# Insert GITHUB_TOKEN variable to npm
-function npm {
-    (
-    export GITHUB_TOKEN=`op item get krjcptuvcnf7tatf6d4r6qkcgq --fields npm`
-    exec command npm "$@"
-    )
-}
-# Lazy load rvm
-function rvm {
-    unset -f rvm
-    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-    rvm "$@"
-}
-
-# Load conda if not loaded
-function conda {
-    unset -f conda
-    source ~/miniconda3/etc/profile.d/conda.sh
-    conda "$@"
+# Lazy load pyenv
+pyenv () {
+	unset -f pyenv
+	export PYENV_ROOT="$HOME/.pyenv"
+	[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init -)"
+	pyenv "$@"
 }
 
 tmux set-environment -g PATH "$PATH"
