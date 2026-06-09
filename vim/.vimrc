@@ -32,6 +32,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'lifepillar/vim-solarized8'
+Plug 'joshdick/onedark.vim'
 " Fuzzy search files in the current directory tree/open files
 Plug trim(system('brew --prefix')) . '/opt/fzf' | Plug 'junegunn/fzf.vim'
 
@@ -135,7 +136,7 @@ set shiftwidth=4
 set expandtab " Use spaces and not tabs
 " }}}
 " Visuals and terminal {{{
-colorscheme solarized8
+colorscheme onedark
 set bg=dark " Terminal is dark
 set termguicolors " rgb colors
 set shell=/bin/bash
