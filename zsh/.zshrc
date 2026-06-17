@@ -134,3 +134,13 @@ else
 fi
 
 alias vzf="fd -H -t f | fzf --preview='bat -f {}' --bind 'enter:become(vim {})'"
+
+function review-changes {
+    if [ "$1" = "--help" ]; then
+        echo Usage: $0 '[COMMIT]'
+        echo
+        echo Open Vimdiff on all files in working dir against HEAD or COMMIT
+        return 0
+    fi
+    vim -c ":G difftool -y $1 | :1tabc"
+}

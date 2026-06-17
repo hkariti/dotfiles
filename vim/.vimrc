@@ -136,6 +136,13 @@ set shiftwidth=4
 set expandtab " Use spaces and not tabs
 " }}}
 " Visuals and terminal {{{
+augroup CustomOneDarkDiff " Show syntax highlighting in diff
+  autocmd!
+  autocmd ColorScheme onedark highlight DiffAdd    ctermbg=22  ctermfg=NONE guibg=#1e2d1e guifg=NONE
+  autocmd ColorScheme onedark highlight DiffChange ctermbg=24  ctermfg=NONE guibg=#1a2333 guifg=NONE
+  autocmd ColorScheme onedark highlight DiffText   ctermbg=31  ctermfg=NONE guibg=#21374a guifg=NONE
+  autocmd ColorScheme onedark highlight DiffDelete ctermbg=52  ctermfg=NONE guibg=#361f1f guifg=NONE
+augroup END
 colorscheme onedark
 set bg=dark " Terminal is dark
 set termguicolors " rgb colors
