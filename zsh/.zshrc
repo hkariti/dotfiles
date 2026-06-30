@@ -63,17 +63,6 @@ SAVEHIST=100000
 setopt appendhistory nomatch notify interactivecomments
 unsetopt autocd beep extendedglob sharehistory
 
-function init_ssh_agent {
-    if [ -z "$SSH_AUTH_SOCK" ]; then
-        SSH_AGENT_PID=`pgrep -u $USER ssh-agent`
-        [ -z "$SSH_AGENT_PID" ] && return
-        SSH_AUTH_SOCK=`find /tmp/ssh-* -name "agent.*" -user $USER`
-        export SSH_AUTH_SOCK SSH_AGENT_PID
-    fi
-
-    ssh-add -l &>/dev/null || ssh-add -t $((60*60*12))
-}
-
 function commit_dotfiles() (
     cd ~/repo/dotfiles
     git add .
@@ -97,13 +86,18 @@ function realpath {
     esac
 }
 
+function init_ssh_agent() {
+    export SSH_AUTH_SOCK=~/.ssh/agent.sock
+    [ -e "$SSH_AUTH_SOCK" ] || ln -s ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock "$SSH_AUTH_SOCK"
+}
+
 help () {
         man zshbuiltins | sed -ne "s/.//g; /^       $1/,/^\$/{s/       //; p;}"
 }
 
 alias 'tmux-ttys'='tmux list-panes -a -F "#{session_name} #{window_index}:#{window_name}.#{pane_index} #{pane_tty}"'
 
-#init_ssh_agent
+init_ssh_agent
 
 # Lazy load nvm
 function nvm {
