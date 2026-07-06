@@ -88,6 +88,9 @@ call plug#end()
 " airline {{{
 " Add buffer number (%n) before filename in status line
 let g:airline_section_c="%<%n %f%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#"
+" Show tabline with tab numbers
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1
 " }}}
 " NERDTree {{{
 let NERDTreeIgnore = ['\.pyc$']
